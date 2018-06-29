@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+const { extname, resolve } = require('path');
+const { readFileSync, writeFileSync, existsSync } = require('fs');
+
+const logger = require('@ycm.jason/logger')();
+const svgToImg = require('..');
+
+const hasOption = (...opts) => process.argv.slice(2).some(arg => opts.includes(arg));
+
+if (hasOption('-h', '--help')) {
+  logger.print(`
+  Usage: svg2img <input path> <output path> [options]
+
+  Convert the input SVG file to the image specifed in the output path.
+
+    <input path>     Only accept .svg files
+    <output path>    Either end with .png/.jpg/.jpeg
+
+  Options:
+    -f,--force       Overwrite existing output path
+`);
+  process.exit(0);
+}
+
+const [svgFilePath, outputPath] = process.argv.slice(2).filter(arg => arg[0] !== '-').map(p => resolve(p));
+const outputExt = extname(outputPath).slice(1).toLowerCase();
+
+if (!existsSync(svgFilePath)) {
+  logger.error(`Cannot find ${svgFilePath}`);
+  process.exit(1);
+}
+
+if ('.svg' !== extname(svgFilePath).toLowerCase()) {
+  logger.error(`${svgFilePath} is not a SVG`);
+  process.exit(1);
+}
+
+if (!(outputExt in svgToImg)) {
+  logger.error(`Cannot convert svg to ${outputExt}. Please use ${Object.keys(svgToImg).join('/')}`);
+  process.exit(1);
+}
+
+if (!hasOption('-f', '--force') && existsSync(outputPath)) {
+  logger.error(`${outputPath} exists`);
+  logger.info(`You can add --force to overwrite`);
+  process.exit(1);
+}
+
+(async () => {
+  logger.info('Converting svg...');
+  const buffer = await svgToImg[outputExt](readFileSync(svgFilePath, 'utf8'));
+  logger.info(`Writing to ${outputPath}`);
+  writeFileSync(outputPath, buffer);
+})().catch(console.error);

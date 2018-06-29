@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Just another svg-to-image library, that works.",
   "main": "lib/index.js",
+  "bin": {
+    "svg2img": "bin/svg2img"
+  },
   "scripts": {
     "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
