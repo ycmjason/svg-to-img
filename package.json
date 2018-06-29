@@ -1,7 +1,7 @@
 {
   "name": "@ycm.jason/svg-to-img",
   "version": "0.0.1",
-  "description": "Just another svg-to-image library that works nice.",
+  "description": "Just another svg-to-image library, that works.",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
