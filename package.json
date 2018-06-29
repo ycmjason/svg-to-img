@@ -1,0 +1,26 @@
+{
+  "name": "@ycm.jason/svg-to-img",
+  "version": "0.0.1",
+  "description": "Just another svg-to-image library that works nice.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ycmjason/svg-to-img.git"
+  },
+  "keywords": [
+    "svg",
+    "convert",
+    "image",
+    "png",
+    "jpeg"
+  ],
+  "author": "Jason Yu <jason.yu@thehutgroup.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ycmjason/svg-to-img/issues"
+  },
+  "homepage": "https://github.com/ycmjason/svg-to-img#readme"
+}
