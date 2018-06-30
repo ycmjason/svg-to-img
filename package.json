@@ -7,12 +7,14 @@
     "svg2img": "bin/svg2img"
   },
   "scripts": {
+    "lint": "eslint . --fix",
     "precommit": "lint-staged",
+    "build": "rollup src/svg-to-img.js -o dist/svg-to-img.js -f umd --name svgToImg",
     "test": "node test/index.js"
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "npm run lint",
       "git add"
     ]
   },
@@ -34,6 +36,7 @@
   },
   "homepage": "https://github.com/ycmjason/svg-to-img#readme",
   "dependencies": {
+    "changedpi": "^1.0.1",
     "jimp": "^0.2.28",
     "puppeteer": "^1.5.0"
   },
@@ -42,6 +45,7 @@
     "eslint": "^5.0.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
-    "opn": "^5.3.0"
+    "opn": "^5.3.0",
+    "rollup": "^0.62.0"
   }
 }
