@@ -4,5 +4,8 @@
     "browser": true,
     "node": true
   },
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": "@ycm.jason/eslint-config"
 }
