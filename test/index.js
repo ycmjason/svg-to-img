@@ -1,50 +1,56 @@
-const { join } = require('path');
-const { readFileSync } = require('fs');
-const { createServer } = require('http');
+const app = require('express')();
 const opn = require('opn');
+const args = process.argv.slice(2);
 
-const svg2img = require('..');
+const $timeout = (fn, ms) => {
+  const id = setTimeout(fn, ms);
+  return () => clearTimeout(id);
+};
 
+console.log('Preparing server...');
 (async () => {
-  const svg = readFileSync(join(__dirname, 'test.svg'), 'utf8');
-  const png = await svg2img.png(svg);
-  const jpg = await svg2img.jpg(svg);
+  let cancelLastTimeout = () => {};
 
-  const html = `
-  <html>
-    <head>
-    </head>
-    <body>
-    <h1>SVG</h1>
-    <img src="/test.svg">
-    <p>
-    <h1>PNG</h1>
-    <img src="/test.png">
-    <p>
-    <h1>JPG</h1>
-    <img src="/test.jpg">
-    </body>
-  </html>
-  `;
-
-  createServer((req, res) => {
+  app.use((req, res, next) => {
     console.log(req.url);
+    next();
+  });
 
-    if (req.url === '/test.svg') {
-      res.setHeader('Content-Type', 'image/svg+xml');
-      return res.end(svg);
+  app.use((req, res, next) => {
+    cancelLastTimeout();
+    next();
+    cancelLastTimeout = $timeout(() => {
+      console.log('No request received in 3 seconds.');
+      console.log('Shutting down server...');
+      process.exit(0);
+    }, 3000);
+  });
+
+  if (args.length <= 0 || args.includes('node')) {
+    app.get('/node', await require('./node')());
+  }
+
+  if (args.length <= 0 || args.includes('script-tag')) {
+    app.get('/script-tag', await require('./script-tag')());
+  }
+
+  if (args.length <= 0 || args.includes('bundler')) {
+    app.get('/bundler', await require('./bundler')());
+  }
+
+  app.listen(5000, () => {
+    console.log('Server started, opening browser...');
+
+    if (args.length <= 0 || args.includes('node')) {
+      opn('http://localhost:5000/node');
     }
 
-    if (req.url === '/test.png') {
-      res.setHeader('Content-Type', 'image/png');
-      return res.end(png);
+    if (args.length <= 0 || args.includes('script-tag')) {
+      opn('http://localhost:5000/script-tag');
     }
 
-    if (req.url === '/test.jpg') {
-      res.setHeader('Content-Type', 'image/jpeg');
-      return res.end(jpg);
+    if (args.length <= 0 || args.includes('bundler')) {
+      opn('http://localhost:5000/bundler');
     }
-
-    res.end(html);
-  }).listen(5000, () => opn('http://localhost:5000'));
-})();
+  });
+})().catch(console.error);

@@ -1,6 +1,6 @@
 # @ycm.jason/svg-to-img
 
-This library convers svg to png/jpeg in browser or node.
+This library converts svg to png/jpeg in browser or node.
 
 ## Install
 
