@@ -48,6 +48,21 @@ SvgToImg.jpg('<svg>...</svg>').then(buffer => { ... });
 SvgToImg.jpeg('<svg>...</svg>').then(buffer => { ... });
 ```
 
+The above code spawns three `puppeteer` server and tear them down after each image generation. This API is nice for one-off usage. 
+
+If you need to convert multiple images, I would suggest the following API.
+
+```js
+const svgToImg = require('svg-to-img')(); // spawns the puppeteer
+
+svgToImg.png('<svg>...</svg>').then(buffer => { ... });
+
+svgToImg.jpg('<svg>...</svg>').then(buffer => { ... });
+
+svgToImg.jpeg('<svg>...</svg>').then(buffer => { ... });
+
+svgToImg.close(() => { ... });
+```
 
 ## Author
 Jason Yu (me@ycmjason.com)

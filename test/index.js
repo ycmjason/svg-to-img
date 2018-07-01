@@ -27,7 +27,8 @@ console.log('Preparing server...');
   });
 
   if (args.length <= 0 || args.includes('node')) {
-    app.get('/node', await require('./node')());
+    app.get('/node-one-off-api', await require('./node-one-off-api')());
+    app.get('/node-persistent-api', await require('./node-persistent-api')());
   }
 
   if (args.length <= 0 || args.includes('script-tag')) {
@@ -42,7 +43,8 @@ console.log('Preparing server...');
     console.log('Server started, opening browser...');
 
     if (args.length <= 0 || args.includes('node')) {
-      opn('http://localhost:5000/node');
+      opn('http://localhost:5000/node-one-off-api');
+      opn('http://localhost:5000/node-persistent-api');
     }
 
     if (args.length <= 0 || args.includes('script-tag')) {
