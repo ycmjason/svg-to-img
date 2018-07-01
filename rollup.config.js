@@ -8,7 +8,7 @@ export default ({
     output: {
       file: 'dist/svg-to-img-full.umd.js',
       format: 'umd',
-      name: 'svgToImg',
+      name: 'SvgToImg',
     },
     plugins: [
       globals(),

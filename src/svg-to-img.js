@@ -30,8 +30,14 @@ const getImageDataURL = (image, type) => {
 };
 
 
-export default (svgString, type) => new Promise((res, rej) => {
+const convertSvg = (svgString, type) => new Promise((res, rej) => {
   const image = new Image();
   image.onload = () => res(getImageDataURL(image, type));
   image.src = `data:image/svg+xml,${encodeURIComponent(svgString)}`;
 });
+
+export default {
+  png: svgString => convertSvg(svgString, 'png'),
+  jpg: svgString => convertSvg(svgString, 'jpeg'),
+  jpeg: svgString => convertSvg(svgString, 'jpeg'),
+};

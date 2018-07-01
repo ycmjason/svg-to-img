@@ -12,7 +12,7 @@ module.exports = () => (req, res) => {
   document.body.appendChild(div);
 
   const svg = \`${svg}\`;
-  svgToImg(svg, 'png').then(dataUrl => {
+  SvgToImg.png(svg).then(dataUrl => {
     const div = document.createElement('div');
     div.innerHTML = \`
       <h1>PNG</h1>
@@ -21,7 +21,7 @@ module.exports = () => (req, res) => {
     document.body.appendChild(div);
   });
 
-  svgToImg(svg, 'jpeg').then(dataUrl => {
+  SvgToImg.jpg(svg).then(dataUrl => {
     const div = document.createElement('div');
     div.innerHTML = \`
       <h1>JPEG</h1>

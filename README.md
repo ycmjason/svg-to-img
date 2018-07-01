@@ -14,22 +14,24 @@ npm install --save @ycm.jason/svg-to-img
 <script src="node_modules/@ycm.jason/svg-to-img/dist/svg-to-img-full.umd.js"></script>
 
 <script>
-svgToImg('<svg>...</svg>', 'png').then(dataURL => { ... });
-// or
-svgToImg('<svg>...</svg>', 'jpg').then(dataURL => { ... });
-svgToImg('<svg>...</svg>', 'jpeg').then(dataURL => { ... });
+SvgToImg.png('<svg>...</svg>').then(dataURL => { ... });
+
+SvgToImg.jpg('<svg>...</svg>').then(dataURL => { ... });
+
+SvgToImg.jpeg('<svg>...</svg>').then(dataURL => { ... });
 </script>
 ```
 
 Or if you are using module loader:
 
 ```js
-import svgToImg from 'svg-to-img/dist/svg-to-img.esm.js';
+import SvgToImg from 'svg-to-img/dist/svg-to-img.esm.js';
 
-svgToImg('<svg>...</svg>', 'png').then(dataURL => { ... });
-// or
-svgToImg('<svg>...</svg>', 'jpg').then(dataURL => { ... });
-svgToImg('<svg>...</svg>', 'jpeg').then(dataURL => { ... });
+SvgToImg.png('<svg>...</svg>').then(dataURL => { ... });
+
+SvgToImg.jpg('<svg>...</svg>').then(dataURL => { ... });
+
+SvgToImg.jpeg('<svg>...</svg>').then(dataURL => { ... });
 ```
 
 ## Server Usage
@@ -37,12 +39,13 @@ svgToImg('<svg>...</svg>', 'jpeg').then(dataURL => { ... });
 On the server side, the promise resolves to a buffer instead.
 
 ```js
-const svgToImg = require('svg-to-img');
+const SvgToImg = require('svg-to-img');
 
-svgToImg('<svg>...</svg>', 'png').then(buffer => { ... });
-// or
-svgToImg('<svg>...</svg>', 'jpg').then(buffer => { ... });
-svgToImg('<svg>...</svg>', 'jpeg').then(buffer => { ... });
+SvgToImg.png('<svg>...</svg>').then(buffer => { ... });
+
+SvgToImg.jpg('<svg>...</svg>').then(buffer => { ... });
+
+SvgToImg.jpeg('<svg>...</svg>').then(buffer => { ... });
 ```
 
 

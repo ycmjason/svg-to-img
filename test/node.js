@@ -1,12 +1,12 @@
 const { join } = require('path');
 const { readFileSync } = require('fs');
 
-const svg2img = require('..');
+const SvgToImg = require('..');
 
 module.exports = async () => {
   const svg = readFileSync(join(__dirname, 'test.svg'), 'utf8');
-  const png = (await svg2img.png(svg)).toString('base64');
-  const jpg = (await svg2img.jpg(svg)).toString('base64');
+  const png = (await SvgToImg.png(svg)).toString('base64');
+  const jpg = (await SvgToImg.jpg(svg)).toString('base64');
 
   return (req, res) => {
     const html = `
