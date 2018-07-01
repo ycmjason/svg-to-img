@@ -18,11 +18,11 @@ Or use CDN
 
 ### SvgToImg.png(svgString)
 - `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[String]>> Promise that resolves to the [dataurl] of the png image.
+- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the png image.
 
 ### SvgToImg.jpeg(svgString)
 - `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[String]>> Promise that resolves to the [dataurl] of the jpeg image.
+- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the jpeg image.
 - alias: `SvgToImg.jpg(svgString)`
 
 ## Node API
@@ -129,5 +129,5 @@ Jason Yu (me@ycmjason.com)
 [Buffer]: https://nodejs.org/api/buffer.html#buffer_class_buffer "Buffer"
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise "Promise"
 [String]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type "String"
-[dataurl]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs "Data URL"
+[Data URL]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs "Data URL"
 [SvgToImg]: #class-svgtoimg
