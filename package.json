@@ -8,6 +8,8 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
+    "preversion": "npm run lint && npm run build",
+    "version": "git add -A",
     "precommit": "lint-staged",
     "build": "npm run build:full && npm run build:core",
     "build:full": "rollup -c --environment FOR:full",
