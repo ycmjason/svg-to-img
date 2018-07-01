@@ -10,7 +10,7 @@ npm install --save @ycm.jason/svg-to-img
 
 ## Browser Usage
 
-```js
+```html
 <script src="node_modules/@ycm.jason/svg-to-img/dist/svg-to-img-full.umd.js"></script>
 
 <script>
