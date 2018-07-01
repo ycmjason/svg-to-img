@@ -1,5 +1,6 @@
 import globals from 'rollup-plugin-node-globals';
 import babel from 'rollup-plugin-babel';
+import { uglify } from 'rollup-plugin-uglify';
 
 export default ({
   full: {
@@ -12,6 +13,7 @@ export default ({
     plugins: [
       globals(),
       babel(),
+      uglify(),
     ],
   },
   core: {

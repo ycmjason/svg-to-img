@@ -53,6 +53,7 @@
     "opn": "^5.3.0",
     "rollup": "^0.62.0",
     "rollup-plugin-babel": "^4.0.0-beta.7",
-    "rollup-plugin-node-globals": "^1.2.1"
+    "rollup-plugin-node-globals": "^1.2.1",
+    "rollup-plugin-uglify": "^4.0.0"
   }
 }
