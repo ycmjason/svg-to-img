@@ -1,10 +1,24 @@
+import '../vendor/jimp.min.js';
+const Jimp = window.Jimp;
+
+const scale = (url, factor) => new Promise(async (res, rej) => {
+  const image = await Jimp.read(url);
+  image.scale(0.5).getBuffer(Jimp.AUTO, (err, buffer) => {
+    if (err) return rej(err);
+    res(url.replace(/,.*/, ',' + buffer.toString('base64')));
+  });
+});
+
 const getImageDataURL = (image, type) => {
   // pre: image is loaded
+  const FACTOR = 2;
   const { width, height } = image;
   const canvas = document.createElement('canvas');
+  canvas.width = width * FACTOR;
+  canvas.height = height * FACTOR;
+
   const context = canvas.getContext('2d');
-  canvas.width = width;
-  canvas.height = height;
+  context.scale(FACTOR, FACTOR);
 
   if (type === 'jpeg') {
     context.fillStyle = 'white';
@@ -12,16 +26,12 @@ const getImageDataURL = (image, type) => {
   }
 
   context.drawImage(image, 0, 0, width, height);
-  return canvas.toDataURL(`image/${type}`);
+  return scale(canvas.toDataURL(`image/${type}`), 0.5);
 };
 
 
-export default (svgString, type, { scale = 1 } = {}) => new Promise((res, rej) => {
+export default (svgString, type) => new Promise((res, rej) => {
   const image = new Image();
-  image.onload = () => {
-    image.width *= scale;
-    image.height *= scale;
-    res(getImageDataURL(image, type));
-  };
+  image.onload = () => res(getImageDataURL(image, type));
   image.src = `data:image/svg+xml,${encodeURIComponent(svgString)}`;
 });
