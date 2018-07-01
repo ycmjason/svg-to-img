@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "eslint . --fix",
-    "preversion": "npm run lint && npm run build",
+    "preversion": "npm run lint && npm run build && $EDITOR CHANGELOG.md",
     "version": "git add -A",
     "precommit": "lint-staged",
     "build": "npm run build:full && npm run build:core",
