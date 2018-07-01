@@ -1,6 +1,6 @@
 # @ycm.jason/svg-to-img
 
-Just another svg-to-image library, that works in both browser and node.
+Just another svg-to-image library, that works in the browser and node.
 
 ## Install
 
