@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/ycmjason/svg-to-img#readme",
   "dependencies": {
+    "@ycm.jason/logger": "^0.1.5",
     "puppeteer": "^1.5.0"
   },
   "devDependencies": {

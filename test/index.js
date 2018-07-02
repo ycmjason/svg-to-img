@@ -22,7 +22,7 @@ console.log('Preparing server...');
     cancelLastTimeout = $timeout(() => {
       console.log('No request received in 3 seconds.');
       console.log('Shutting down server...');
-      process.exit(0);
+      if (!process.env.SVG_TO_IMG_DEBUG) process.exit(0);
     }, 3000);
   });
 
