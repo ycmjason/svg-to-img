@@ -121,9 +121,13 @@ const getImageDataURL = (image, type) => {
 
 
 const convertSvg = (svgString, type) => new Promise(async (res, rej) => {
-  const image = new Image();
-  image.onload = () => res(getImageDataURL(image, type));
-  image.src = `data:image/svg+xml,${encodeURIComponent(await browser(svgString))}`;
+  try {
+    const image = new Image();
+    image.onload = () => res(getImageDataURL(image, type));
+    image.src = `data:image/svg+xml,${encodeURIComponent(await browser(svgString))}`;
+  } catch (e) {
+    rej(e);
+  }
 });
 
 var svgToImg = {
