@@ -16,7 +16,7 @@ module.exports = async () => {
       <body>
       <div>
         <h1>SVG</h1>
-        <img src="data:image/svg+xml,${encodeURIComponent(svg)}">
+        ${svg}
       </div>
       <div>
         <h1>PNG</h1>

@@ -2,7 +2,7 @@ import SvgToImg from '../../dist/svg-to-img.esm.js';
 const svg = window.svg;
 
 const div = document.createElement('div');
-div.innerHTML = `<h1>SVG</h1><img src="data:image/svg+xml,${encodeURIComponent(svg)}">`;
+div.innerHTML = `<h1>SVG</h1>${svg}`;
 document.body.appendChild(div);
 
 SvgToImg.png(svg).then(dataUrl => {

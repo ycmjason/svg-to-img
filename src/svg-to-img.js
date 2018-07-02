@@ -1,4 +1,5 @@
 import '../vendor/jimp.min.js';
+import prefetchSvg from '../node_modules/prefetch-svg/dist/prefetchSvg.esm.js';
 const Jimp = window.Jimp;
 
 const scale = (url, factor) => new Promise(async (res, rej) => {
@@ -30,10 +31,10 @@ const getImageDataURL = (image, type) => {
 };
 
 
-const convertSvg = (svgString, type) => new Promise((res, rej) => {
+const convertSvg = (svgString, type) => new Promise(async (res, rej) => {
   const image = new Image();
   image.onload = () => res(getImageDataURL(image, type));
-  image.src = `data:image/svg+xml,${encodeURIComponent(svgString)}`;
+  image.src = `data:image/svg+xml,${encodeURIComponent(await prefetchSvg(svgString))}`;
 });
 
 export default {

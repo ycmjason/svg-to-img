@@ -8,7 +8,7 @@ module.exports = () => (req, res) => {
   <script>${readFileSync(require.resolve('../dist/svg-to-img-full.umd.js'))}</script>
   <script>
   const div = document.createElement('div');
-  div.innerHTML = \`<h1>SVG</h1><img src="data:image/svg+xml,${encodeURIComponent(svg)}">\`;
+  div.innerHTML = \`<h1>SVG</h1>${svg}\`;
   document.body.appendChild(div);
 
   const svg = \`${svg}\`;
