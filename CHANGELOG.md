@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.3
+
+### Fix
+- Proper throwing when prefetching fails
+
 ## v0.1.2
 
 ### Fix
