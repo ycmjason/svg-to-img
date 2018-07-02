@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.4
+
+### Fix
+- Closing puppeteer even if rendering fails in one-off API
+
 ## v0.1.3
 
 ### Fix
