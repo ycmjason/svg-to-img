@@ -40,7 +40,7 @@ Or use CDN
 
 You can create a SvgToImg by calling `SvgToImg()`. This will create a reusable instance of puppeteer. Ideal if you have to convert multiple SVGs.
 
-```
+```js
 const SvgToImg = require('@ycm.jason/svg-to-img');
 const svgToImg = SvgToImg();
 ```
