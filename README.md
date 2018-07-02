@@ -79,7 +79,7 @@ SvgToImg.jpg('<svg>...</svg>').then(dataURL => { ... });
 Or if you are using module loader:
 
 ```js
-import SvgToImg from 'svg-to-img/dist/svg-to-img.esm.js';
+import SvgToImg from '@ycm.jason/svg-to-img/dist/svg-to-img.esm.js';
 
 SvgToImg.png('<svg>...</svg>').then(dataURL => { ... });
 
@@ -98,7 +98,7 @@ When using this with node, the promise resolves to a buffer.
 The following API is great for one-off conversion. They will spawn an instance of `puppeteer` and close it after the SVG has been converted.
 
 ```js
-const SvgToImg = require('svg-to-img');
+const SvgToImg = require('@ycm.jason/svg-to-img');
 
 SvgToImg.png('<svg>...</svg>').then(buffer => { ... });
 
@@ -112,7 +112,7 @@ The above code spawns three independent `puppeteer` server and closes them after
 #### Persistent API
 
 ```js
-const svgToImg = require('svg-to-img')(); // spawns the puppeteer
+const svgToImg = require('@ycm.jason/svg-to-img')(); // spawns the puppeteer
 
 svgToImg.png('<svg>...</svg>').then(buffer => { ... });
 
