@@ -14,52 +14,6 @@ Or use CDN
 <script src="https://unpkg.com/@ycm.jason/svg-to-img/dist/svg-to-img-full.umd.js"></script>
 ```
 
-## Browser API
-
-### SvgToImg.png(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the png image.
-
-### SvgToImg.jpeg(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the jpeg image.
-- alias: `SvgToImg.jpg(svgString)`
-
-## Node API
-
-### SvgToImg.png(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the png image.
-
-### SvgToImg.jpeg(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the jpeg image.
-- alias: `SvgToImg.jpg(svgString)`
-
-### class: SvgToImg
-
-You can create a SvgToImg by calling `SvgToImg()`. This will create a reusable instance of puppeteer. Ideal if you have to convert multiple SVGs.
-
-```js
-const SvgToImg = require('@ycm.jason/svg-to-img');
-const svgToImg = SvgToImg();
-```
-
-#### svgToImg.close()
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]> Promise that resolves after puppeteer closes the browser.
-
-#### svgToImg.png(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the png image.
-
-
-#### svgToImg.jpeg(svgString)
-- `svgString` <[String]> The string containing the svg xml.
-- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the jpeg image.
-- alias: `svgToImg.jpg(svgString)`
-
-
 ## Usage
 
 ### Browser
@@ -122,6 +76,51 @@ svgToImg.jpg('<svg>...</svg>').then(buffer => { ... });
 
 svgToImg.close(() => { ... });
 ```
+
+## Browser API
+
+### SvgToImg.png(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the png image.
+
+### SvgToImg.jpeg(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[String]>> Promise that resolves to the [Data URL] of the jpeg image.
+- alias: `SvgToImg.jpg(svgString)`
+
+## Node API
+
+### SvgToImg.png(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the png image.
+
+### SvgToImg.jpeg(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the jpeg image.
+- alias: `SvgToImg.jpg(svgString)`
+
+### class: SvgToImg
+
+You can create a SvgToImg by calling `SvgToImg()`. This will create a reusable instance of puppeteer. Ideal if you have to convert multiple SVGs.
+
+```js
+const SvgToImg = require('@ycm.jason/svg-to-img');
+const svgToImg = SvgToImg();
+```
+
+#### svgToImg.close()
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]> Promise that resolves after puppeteer closes the browser.
+
+#### svgToImg.png(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the png image.
+
+
+#### svgToImg.jpeg(svgString)
+- `svgString` <[String]> The string containing the svg xml.
+- return: <[Promise]<[Buffer]>> Promise that resolves to the [Buffer] of the jpeg image.
+- alias: `svgToImg.jpg(svgString)`
 
 ## Author
 Jason Yu (me@ycmjason.com)

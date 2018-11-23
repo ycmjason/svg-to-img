@@ -2,8 +2,8 @@ import globals from 'rollup-plugin-node-globals';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
-export default ({
-  full: {
+export default [
+  {
     input: 'src/svg-to-img-full.js',
     output: {
       file: 'dist/svg-to-img-full.umd.js',
@@ -16,7 +16,7 @@ export default ({
       terser(),
     ],
   },
-  core: {
+  {
     input: 'src/svg-to-img.js',
     output: {
       file: 'dist/svg-to-img.esm.js',
@@ -26,4 +26,4 @@ export default ({
       globals(),
     ],
   },
-})[process.env.FOR];
+];
